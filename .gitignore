@@ -1,18 +1,77 @@
+# =========================
 # Godot 4+ specific ignores
+# =========================
 .godot/
 .nomedia
-
-# Godot-specific ignores
 .import/
-export.cfg
-export_credentials.cfg
-
-# Imported translations (automatically generated from CSV files)
 *.translation
 
-# Mono-specific ignores
+# Export config / credentials
+export.cfg
+export_credentials.cfg
+export_presets.cfg
+
+# Mono / C# (if used)
 .mono/
 data_*/
 mono_crash.*.json
 
+# Platform folders
 /android/
+
+# =========================
+# Python ignores
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+pip-wheel-metadata/
+*.egg
+
+# Test / tooling caches
+.pytest_cache/
+.mypy_cache/
+.pyre/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE/editor (common)
+.vscode/
+.idea/
+
+# =========================
+# macOS ignores
+# =========================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
