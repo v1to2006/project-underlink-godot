@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://brgrkvdf8uisw"]
+
+[ext_resource type="Terrain3DMaterial" uid="uid://xsv554r25gaf" path="res://terrain/new_terrain_3d_material.tres" id="1_071qc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4bai2"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_opult"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_4bai2")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_04ybm"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_opult")])
+
+[sub_resource type="BoxMesh" id="BoxMesh_k6ycj"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://terrain"
+material = ExtResource("1_071qc")
+assets = SubResource("Terrain3DAssets_04ybm")
+show_checkered = true
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Terrain3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.429993, 0)
+mesh = SubResource("BoxMesh_k6ycj")
