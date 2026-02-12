@@ -60,9 +60,6 @@ class PlayerMotion(CharacterBody3D):
 			self.input.set_mouse_mode(0)
 	
 	def _apply_gravity(self, delta: float):
-		if self.is_on_floor():
-			return
-		
 		target_velocity = self.velocity
 		target_velocity.y -= self.gravity * delta
 
