@@ -18,19 +18,13 @@ class PlayerMotion(CharacterBody3D):
 		self.input.set_mouse_mode(2)
 	
 	def _unhandled_input(self, event: InputEvent) -> None:
-		if not isinstance(event, InputEventMouseMotion):
-			return
-
-		self.rotate_y(-event.relative.x * self.mouse_sensitivity)
-
-		self._pitch -= event.relative.y * self.mouse_sensitivity
-		self._pitch = max(min(self._pitch, math.radians(90)), math.radians(-90))
-
-		target_rotation = self.head.rotation
-		target_rotation.x = self._pitch
-		self.head.rotation = target_rotation
+		self._handle_view(event)
 	
 	def _physics_process(self, delta: float) -> None:
+		self._handle_motion()
+		self._handle_cursor()
+	
+	def _handle_motion(self):
 		input_vector = self.input.get_vector("move_left", "move_right", "move_back", "move_forward")
 		global_transform = self.global_transform.basis
 
@@ -46,5 +40,19 @@ class PlayerMotion(CharacterBody3D):
 
 		self.move_and_slide()
 
+	def _handle_view(self, event: InputEvent):
+		if not isinstance(event, InputEventMouseMotion):
+			return
+
+		self.rotate_y(-event.relative.x * self.mouse_sensitivity)
+
+		self._pitch -= event.relative.y * self.mouse_sensitivity
+		self._pitch = max(min(self._pitch, math.radians(90)), math.radians(-90))
+
+		target_rotation = self.head.rotation
+		target_rotation.x = self._pitch
+		self.head.rotation = target_rotation
+	
+	def _handle_cursor(self):
 		if self.input.is_action_just_pressed("ui_cancel"):
 			self.input.set_mouse_mode(0)
