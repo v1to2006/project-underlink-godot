@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://wd8uo4nv8kc"]
+[gd_scene load_steps=11 format=3 uid="uid://wd8uo4nv8kc"]
 
 [ext_resource type="PackedScene" uid="uid://ca42al51cvxtp" path="res://assets/scenes/prefabs/player.tscn" id="1_ar6uh"]
 [ext_resource type="PackedScene" uid="uid://cxf2tv5b1uvfs" path="res://assets/models/drill2.glb" id="2_munyu"]
@@ -23,6 +23,9 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_munyu"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hctyx"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="test_scene" type="Node3D"]
 
@@ -56,6 +59,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53098, 0.5, 0)
 
 [node name="Table" type="MeshInstance3D" parent="Environment/PC"]
 mesh = SubResource("BoxMesh_munyu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/PC/Table"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/PC/Table/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_hctyx")
 
 [node name="OldPc" parent="Environment/PC" instance=ExtResource("3_ftmqr")]
 transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, -0.127062, 0.890856, 0)
