@@ -8,8 +8,9 @@ from py4godot.classes.Node3D import Node3D
 
 @gdclass
 class PlayerMotion(CharacterBody3D):
-	speed: float = 10
+	speed: float = 5
 	mouse_sensitivity: float = 0.0025
+	gravity: float = 10
 
 	def _ready(self) -> None:
 		self.input: Input = Input.instance()
@@ -22,6 +23,7 @@ class PlayerMotion(CharacterBody3D):
 	
 	def _physics_process(self, delta: float) -> None:
 		self._handle_motion()
+		self._apply_gravity(delta)
 		self._handle_cursor()
 	
 	def _handle_motion(self):
@@ -56,3 +58,9 @@ class PlayerMotion(CharacterBody3D):
 	def _handle_cursor(self):
 		if self.input.is_action_just_pressed("ui_cancel"):
 			self.input.set_mouse_mode(0)
+	
+	def _apply_gravity(self, delta: float):
+		target_velocity = self.velocity
+		target_velocity.y -= self.gravity * delta
+
+		self.velocity = target_velocity

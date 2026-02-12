@@ -1,6 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://wd8uo4nv8kc"]
+[gd_scene load_steps=11 format=3 uid="uid://wd8uo4nv8kc"]
 
 [ext_resource type="PackedScene" uid="uid://ca42al51cvxtp" path="res://assets/scenes/prefabs/player.tscn" id="1_ar6uh"]
+[ext_resource type="PackedScene" uid="uid://cxf2tv5b1uvfs" path="res://assets/models/drill2.glb" id="2_munyu"]
+[ext_resource type="PackedScene" uid="uid://cpbpju0eetbsb" path="res://assets/models/OldPc.glb" id="3_ftmqr"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jigqq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ftmqr"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ar6uh"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -15,20 +22,48 @@ sky = SubResource("Sky_munyu")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_jigqq"]
+[sub_resource type="BoxMesh" id="BoxMesh_munyu"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hctyx"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="test_scene" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ftmqr")
+[node name="Player" parent="." instance=ExtResource("1_ar6uh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.23152, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="drill2" parent="Environment" instance=ExtResource("2_munyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.59771, 1.98495, 1.69253)
+
+[node name="Ground" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("PlaneMesh_jigqq")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ftmqr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
-mesh = SubResource("PlaneMesh_jigqq")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_ftmqr")
 
-[node name="Player" parent="." instance=ExtResource("1_ar6uh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="PC" type="Node3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53098, 0.5, 0)
+
+[node name="Table" type="MeshInstance3D" parent="Environment/PC"]
+mesh = SubResource("BoxMesh_munyu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/PC/Table"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/PC/Table/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_hctyx")
+
+[node name="OldPc" parent="Environment/PC" instance=ExtResource("3_ftmqr")]
+transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, -0.127062, 0.890856, 0)
