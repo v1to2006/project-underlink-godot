@@ -1,33 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://brgrkvdf8uisw"]
+[gd_scene load_steps=3 format=3 uid="uid://brgrkvdf8uisw"]
 
-[ext_resource type="Script" uid="uid://dnnnauc7r673u" path="res://addons/zylann.hterrain/hterrain.gd" id="1_k6ycj"]
-[ext_resource type="Resource" path="res://Terrain/data.hterrain" id="2_k6ycj"]
-[ext_resource type="Script" uid="uid://dr2t1kiu2f5qm" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_lrak4"]
-[ext_resource type="Texture2D" uid="uid://c88j3oj0lf6om" path="res://demo/assets/textures/rock023_alb_ht.png" id="4_0553x"]
-[ext_resource type="Texture2D" uid="uid://c307hdmos4gtm" path="res://demo/assets/textures/rock023_nrm_rgh.png" id="5_2sqgb"]
-
-[sub_resource type="Resource" id="Resource_hutpk"]
-script = ExtResource("3_lrak4")
-mode = 0
-textures = [[ExtResource("4_0553x"), null], [ExtResource("5_2sqgb"), null]]
+[ext_resource type="PackedScene" uid="uid://djvk8xg0sprjt" path="res://terrain/h_terrain.tscn" id="1_4bai2"]
+[ext_resource type="Resource" uid="uid://cxvu4r21hhy2y" path="res://terrain/data.hterrain" id="2_opult"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="HTerrain" type="Node3D" parent="."]
-script = ExtResource("1_k6ycj")
-_terrain_data = ExtResource("2_k6ycj")
-chunk_size = 32
-collision_enabled = true
-collision_layer = 1
-collision_mask = 1
-shader_type = "Classic4Lite"
-custom_shader = null
-custom_globalmap_shader = null
-texture_set = SubResource("Resource_hutpk")
-render_layers = 1
-cast_shadow = 1
-shader_params/u_ground_uv_scale = 20
-shader_params/u_depth_blending = true
-shader_params/u_triplanar = null
-shader_params/u_tile_reduction = null
-metadata/_custom_type_script = "uid://dnnnauc7r673u"
+[node name="HTerrain" parent="." instance=ExtResource("1_4bai2")]
+_terrain_data = ExtResource("2_opult")
