@@ -18,6 +18,10 @@ config/icon="res://assets/icon.svg"
 
 enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 move_forward={
