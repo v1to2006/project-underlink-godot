@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://djvk8xg0sprjt"]
+[gd_scene load_steps=8 format=3 uid="uid://djvk8xg0sprjt"]
 
 [ext_resource type="Script" uid="uid://dnnnauc7r673u" path="res://addons/zylann.hterrain/hterrain.gd" id="1_c63j2"]
 [ext_resource type="Script" uid="uid://dr2t1kiu2f5qm" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="2_7l01d"]
+[ext_resource type="Resource" path="res://terrain/data.hterrain" id="2_iqupa"]
 [ext_resource type="Texture2D" uid="uid://c88j3oj0lf6om" path="res://demo/assets/textures/rock023_alb_ht.png" id="3_iqupa"]
 [ext_resource type="Texture2D" uid="uid://c307hdmos4gtm" path="res://demo/assets/textures/rock023_nrm_rgh.png" id="4_o8x8e"]
 
@@ -15,7 +16,7 @@ textures = [[ExtResource("3_iqupa"), null], [ExtResource("4_o8x8e"), null]]
 [node name="HTerrain" type="Node3D"]
 script = ExtResource("1_c63j2")
 centered = true
-_terrain_data = null
+_terrain_data = ExtResource("2_iqupa")
 chunk_size = 32
 collision_enabled = true
 collision_layer = 1
