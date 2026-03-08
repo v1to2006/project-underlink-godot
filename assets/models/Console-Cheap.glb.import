@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://mhut6nfstbep"
-path="res://.godot/imported/Console-Cheap.glb-245407eb9c7f6e5046786994b9f97802.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/Console-Cheap.glb"
-dest_files=["res://.godot/imported/Console-Cheap.glb-245407eb9c7f6e5046786994b9f97802.scn"]
 
 [params]
 

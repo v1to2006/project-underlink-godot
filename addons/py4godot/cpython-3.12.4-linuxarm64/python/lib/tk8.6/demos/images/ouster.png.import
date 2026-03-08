@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi3s2r7n25yg4"
-path="res://.godot/imported/idle_48.png-43aca150471a028e4f99b7d861ef8768.ctex"
+uid="uid://cwi8y7l8n7og4"
+path="res://.godot/imported/ouster.png-61ea1be4f3bda3b13e0a95304ba40462.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/py4godot/cpython-3.12.4-linux64/python/lib/python3.12/idlelib/Icons/idle_48.png"
-dest_files=["res://.godot/imported/idle_48.png-43aca150471a028e4f99b7d861ef8768.ctex"]
+source_file="res://addons/py4godot/cpython-3.12.4-linuxarm64/python/lib/tk8.6/demos/images/ouster.png"
+dest_files=["res://.godot/imported/ouster.png-61ea1be4f3bda3b13e0a95304ba40462.ctex"]
 
 [params]
 
