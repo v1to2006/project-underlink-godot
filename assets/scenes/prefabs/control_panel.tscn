@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://d3a3dc6ee8lcc"]
+
+[ext_resource type="PackedScene" uid="uid://1y0k78ap4gg8" path="res://assets/models/Console-Cheap.glb" id="1_cs20e"]
+[ext_resource type="Script" path="res://assets/scripts/gameplay/MapRenderer.py" id="2_60wqy"]
+[ext_resource type="Script" path="res://assets/scripts/gameplay/CockpitButton.py" id="2_ld4wi"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ld4wi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld4wi"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ld4wi")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_60wqy"]
+points = PackedVector3Array(0.269777, 0.0842718, 0.0350216, -0.219777, 0.0536746, -0.217383, -0.219777, 0.0919211, -0.217383, -0.219777, 0.0536746, 0.218627, 0.155008, 0.0536746, -0.202061, -0.219777, 0.0919211, 0.218627, 0.139721, 0.0536746, 0.218627, 0.139721, 0.0919211, -0.217383, 0.139721, 0.0919211, 0.218627, 0.269777, 0.0613314, -0.0337771, 0.22387, 0.0919211, -0.102619, 0.216202, 0.0536746, 0.111503, 0.139721, 0.0536746, -0.217383, 0.22387, 0.0919211, 0.103863, 0.216202, 0.0536746, -0.110258, 0.26211, 0.0613314, 0.0503007, 0.269777, 0.0842718, -0.0337771, 0.155008, 0.0536746, 0.203305, 0.155008, 0.0919211, 0.203305, 0.26211, 0.0613314, -0.0490563, 0.155008, 0.0919211, -0.202061, 0.269777, 0.0613314, 0.0350216, 0.193249, 0.0919211, -0.148499, 0.26211, 0.0842718, 0.0503007, 0.193249, 0.0536746, -0.148499, 0.208583, 0.0536746, 0.126824)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cs20e"]
+points = PackedVector3Array(0.269777, 0.0842718, 0.0350216, -0.219777, 0.0536746, -0.217383, -0.219777, 0.0919211, -0.217383, -0.219777, 0.0536746, 0.218627, 0.155008, 0.0536746, -0.202061, -0.219777, 0.0919211, 0.218627, 0.139721, 0.0536746, 0.218627, 0.139721, 0.0919211, -0.217383, 0.139721, 0.0919211, 0.218627, 0.269777, 0.0613314, -0.0337771, 0.22387, 0.0919211, -0.102619, 0.216202, 0.0536746, 0.111503, 0.139721, 0.0536746, -0.217383, 0.22387, 0.0919211, 0.103863, 0.216202, 0.0536746, -0.110258, 0.26211, 0.0613314, 0.0503007, 0.269777, 0.0842718, -0.0337771, 0.155008, 0.0536746, 0.203305, 0.155008, 0.0919211, 0.203305, 0.26211, 0.0613314, -0.0490563, 0.155008, 0.0919211, -0.202061, 0.269777, 0.0613314, 0.0350216, 0.193249, 0.0919211, -0.148499, 0.26211, 0.0842718, 0.0503007, 0.193249, 0.0536746, -0.148499, 0.208583, 0.0536746, 0.126824)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ju80"]
+points = PackedVector3Array(0.269777, 0.0842718, 0.0350216, -0.219777, 0.0536746, -0.217383, -0.219777, 0.0919211, -0.217383, -0.219777, 0.0536746, 0.218627, 0.155008, 0.0536746, -0.202061, -0.219777, 0.0919211, 0.218627, 0.139721, 0.0536746, 0.218627, 0.139721, 0.0919211, -0.217383, 0.139721, 0.0919211, 0.218627, 0.269777, 0.0613314, -0.0337771, 0.22387, 0.0919211, -0.102619, 0.216202, 0.0536746, 0.111503, 0.139721, 0.0536746, -0.217383, 0.22387, 0.0919211, 0.103863, 0.216202, 0.0536746, -0.110258, 0.26211, 0.0613314, 0.0503007, 0.269777, 0.0842718, -0.0337771, 0.155008, 0.0536746, 0.203305, 0.155008, 0.0919211, 0.203305, 0.26211, 0.0613314, -0.0490563, 0.155008, 0.0919211, -0.202061, 0.269777, 0.0613314, 0.0350216, 0.193249, 0.0919211, -0.148499, 0.26211, 0.0842718, 0.0503007, 0.193249, 0.0536746, -0.148499, 0.208583, 0.0536746, 0.126824)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4lpm1"]
+points = PackedVector3Array(0.269777, 0.0842718, 0.0350216, -0.219777, 0.0536746, -0.217383, -0.219777, 0.0919211, -0.217383, -0.219777, 0.0536746, 0.218627, 0.155008, 0.0536746, -0.202061, -0.219777, 0.0919211, 0.218627, 0.139721, 0.0536746, 0.218627, 0.139721, 0.0919211, -0.217383, 0.139721, 0.0919211, 0.218627, 0.269777, 0.0613314, -0.0337771, 0.22387, 0.0919211, -0.102619, 0.216202, 0.0536746, 0.111503, 0.139721, 0.0536746, -0.217383, 0.22387, 0.0919211, 0.103863, 0.216202, 0.0536746, -0.110258, 0.26211, 0.0613314, 0.0503007, 0.269777, 0.0842718, -0.0337771, 0.155008, 0.0536746, 0.203305, 0.155008, 0.0919211, 0.203305, 0.26211, 0.0613314, -0.0490563, 0.155008, 0.0919211, -0.202061, 0.269777, 0.0613314, 0.0350216, 0.193249, 0.0919211, -0.148499, 0.26211, 0.0842718, 0.0503007, 0.193249, 0.0536746, -0.148499, 0.208583, 0.0536746, 0.126824)
+
+[node name="Console-Cheap" instance=ExtResource("1_cs20e")]
+
+[node name="Cube_001" parent="." index="8"]
+material_override = SubResource("StandardMaterial3D_ld4wi")
+script = ExtResource("2_60wqy")
+
+[node name="Plane_002" parent="." index="10"]
+script = ExtResource("2_ld4wi")
+action_name = "right"
+drill_node_path = "/root/Expedition/ProxyCube"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_002" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_002/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_60wqy")
+
+[node name="Plane_003" parent="." index="11"]
+script = ExtResource("2_ld4wi")
+action_name = "forward"
+drill_node_path = "/root/Expedition/ProxyCube"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_003" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_003/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_cs20e")
+
+[node name="Plane_004" parent="." index="12"]
+script = ExtResource("2_ld4wi")
+action_name = "backward"
+drill_node_path = "/root/Expedition/ProxyCube"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_004" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_004/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_3ju80")
+
+[node name="Plane_005" parent="." index="13"]
+script = ExtResource("2_ld4wi")
+action_name = "left"
+drill_node_path = "/root/Expedition/ProxyCube"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_005" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_005/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_4lpm1")

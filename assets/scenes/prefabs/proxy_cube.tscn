@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://osepyopob37i"]
+
+[ext_resource type="Script" path="res://assets/scripts/gameplay/DrillProxy.py" id="1_pk07a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tavg2"]
+
+[node name="ProxyCube" type="MeshInstance3D"]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_tavg2")
+script = ExtResource("1_pk07a")
+move_speed = 4.0
+turn_speed_degrees = 60.0
+crash_height_margin = 0.2
+move_dir = 0
+turn_dir = 0
+dead = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.644337, 0)
+omni_range = 11.041
+omni_attenuation = 5.19
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 18, 0)

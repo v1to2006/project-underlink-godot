@@ -1,43 +1,168 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpe0w1c0ktqu5"]
+[gd_scene load_steps=23 format=3 uid="uid://bpe0w1c0ktqu5"]
 
-[ext_resource type="PackedScene" uid="uid://chdsbwin8fpic" path="res://assets/models/DRILLm.glb" id="1_ohhre"]
 [ext_resource type="PackedScene" uid="uid://dqqffww7b2060" path="res://assets/models/Holder_Desk.glb" id="2_i1wlx"]
 [ext_resource type="Texture2D" uid="uid://cqsg7sc3oy7v7" path="res://assets/models/GeneratorMk2_Metal053B_1K-JPG_Color.jpg" id="2_mrbvm"]
 [ext_resource type="PackedScene" uid="uid://c0oxd0cfu2h3o" path="res://assets/models/Console-table.glb" id="4_epghp"]
-[ext_resource type="PackedScene" uid="uid://cpbpju0eetbsb" path="res://assets/models/OldPc.glb" id="5_mrbvm"]
+[ext_resource type="Texture2D" uid="uid://deuuafcphmemy" path="res://assets/models/Holder_Desk_Metal056C_1K-JPG_Color.jpg" id="4_h3juu"]
+[ext_resource type="PackedScene" uid="uid://bcnquqbogsddd" path="res://assets/models/GeneratorMk2.glb" id="5_epghp"]
+[ext_resource type="PackedScene" uid="uid://bponxkbrfpfw" path="res://assets/scenes/prefabs/old_pc.tscn" id="7_h3juu"]
+[ext_resource type="PackedScene" uid="uid://d3a3dc6ee8lcc" path="res://assets/scenes/prefabs/control_panel.tscn" id="7_l7egs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jpwim"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_flq66"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_epghp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8iese"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7egs"]
+albedo_texture = ExtResource("4_h3juu")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ohhre"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jpwim"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3juu"]
 albedo_texture = ExtResource("2_mrbvm")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ohhre"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_epghp"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mrbvm"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h3juu"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l7egs"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vav46"]
+points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mrbvm"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_madua"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="Cockpit" type="Node3D"]
 
-[node name="OutMesh" parent="." instance=ExtResource("1_ohhre")]
-
-[node name="Roof" type="MeshInstance3D" parent="OutMesh"]
-transform = Transform3D(4, 0, 0, 0, -1, 1.31134e-07, 0, -8.74228e-08, -1.5, 0, 1.95655, 0)
-material_override = SubResource("StandardMaterial3D_h3juu")
-mesh = SubResource("PlaneMesh_ohhre")
-
 [node name="Desk" parent="." instance=ExtResource("2_i1wlx")]
-transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 2.82286, 0.0750524, 0.0194594)
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 2.82286, -0.155235, 0.0194594)
 
-[node name="Console-Cheap" parent="Desk"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12, 0)
-script = null
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Desk"]
+transform = Transform3D(4.78787, 0, 1.42109e-14, 0, 1.9387, 0, -2.84217e-14, 0, 2.09233, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_jpwim")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Desk/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_flq66")
 
 [node name="Console-table" parent="." instance=ExtResource("4_epghp")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.166107, 0.648002, -0.920276)
 
-[node name="OldPc" parent="Console-table" instance=ExtResource("5_mrbvm")]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0, 0.84106, 0.097)
+[node name="Collision" type="MeshInstance3D" parent="Console-table"]
+transform = Transform3D(1.96628, 0, 0, 0, 1, 0, 0, 0, 1.92262, 0, -0.303593, 0)
+visible = false
+mesh = SubResource("BoxMesh_epghp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Console-table/Collision"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Console-table/Collision/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_8iese")
+
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="Roof" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1.5, 0, -0.300491, 0)
+material_override = SubResource("StandardMaterial3D_l7egs")
+mesh = SubResource("PlaneMesh_ohhre")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Roof"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Roof/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_jpwim")
+
+[node name="Roof5" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(-1.74846e-07, -1, 0, 4, -4.37114e-08, 0, 0, 0, 1.5, 3.46726, -0.300491, 0)
+material_override = SubResource("StandardMaterial3D_h3juu")
+mesh = SubResource("PlaneMesh_ohhre")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Roof5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Roof5/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_epghp")
+
+[node name="Roof6" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(5.24537e-07, 1, 0, -4, 1.31134e-07, 0, 0, 0, 1.5, -4.03923, -0.300491, 0)
+material_override = SubResource("StandardMaterial3D_h3juu")
+mesh = SubResource("PlaneMesh_ohhre")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Roof6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Roof6/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_mrbvm")
+
+[node name="Roof2" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(4, 0, 0, 0, -1, -1.31134e-07, 0, 8.74228e-08, -1.5, 0, 2.4226, 0)
+material_override = SubResource("StandardMaterial3D_h3juu")
+mesh = SubResource("PlaneMesh_ohhre")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Roof2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Roof2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_h3juu")
+
+[node name="Roof3" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(4, 0, 0, 0, -4.37114e-08, 1.5, 0, -1, -6.55671e-08, 0, 1.11334, 1.40891)
+material_override = SubResource("StandardMaterial3D_h3juu")
+mesh = SubResource("PlaneMesh_ohhre")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Roof3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Roof3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_l7egs")
+
+[node name="Roof4" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(4, 0, 0, 0, -4.37114e-08, -1.5, 0, 1, -6.55671e-08, 0, 1.14459, -1.36443)
+material_override = SubResource("StandardMaterial3D_h3juu")
+mesh = SubResource("PlaneMesh_ohhre")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh/Roof4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Roof4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_vav46")
+
+[node name="GeneratorMk2" parent="." instance=ExtResource("5_epghp")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -3.28941, -0.219982, 0.540994)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GeneratorMk2"]
+transform = Transform3D(2.09293, 0, 0, 0, 1.67265, 0, 0, 0, 2.07322, 0, 0.329425, 0)
+visible = false
+mesh = SubResource("BoxMesh_mrbvm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GeneratorMk2/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GeneratorMk2/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_madua")
+
+[node name="LightBulb" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90613, 0)
+
+[node name="OldPc" parent="." instance=ExtResource("7_h3juu")]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0.218805, 1.24682, -0.950552)
+
+[node name="Console-Cheap" parent="." instance=ExtResource("7_l7egs")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 2.8192, 0.5, 0)

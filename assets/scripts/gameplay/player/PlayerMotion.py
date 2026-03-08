@@ -8,7 +8,7 @@ from py4godot.classes.Node3D import Node3D
 
 @gdclass
 class PlayerMotion(CharacterBody3D):
-	speed: float = 5
+	speed: float = 3
 	mouse_sensitivity: float = 0.0025
 	gravity: float = 10
 
