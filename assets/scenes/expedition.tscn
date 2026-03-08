@@ -94,13 +94,15 @@ material = SubResource("Terrain3DMaterial_nkwfe")
 assets = SubResource("Terrain3DAssets_ikvat")
 collision_shape_size = 8
 collision_radius = 16
-mesh_lods = 9
+mesh_lods = 8
 mesh_size = 8
+cast_shadows = 0
 top_level = true
 metadata/_edit_lock_ = true
 
 [node name="ProxyCube" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.405, 10, -80.8974)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_tavg2")
 
 [node name="DRILLm" parent="." instance=ExtResource("2_t7ljo")]
