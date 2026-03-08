@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d51ttt8sywyo"
-path.s3tc="res://.godot/imported/Console-Cheap_Metal053B_1K-JPG_Color.jpg-7110ac96aaf66197e820b0296fbca9db.s3tc.ctex"
+uid="uid://cvnp5ua5ul2bb"
+path.s3tc="res://.godot/imported/Console-Cheap_Metal027_1K-JPG_Color.jpg-82c0b10d596bcf48625248e18af60921.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f39c9000ea5ddd575c30667e4e9bb784"
+"md5": "38f291b62e4492fd1882ec0fbd4f0f35"
 }
 
 [deps]
 
-source_file="res://assets/models/Console-Cheap_Metal053B_1K-JPG_Color.jpg"
-dest_files=["res://.godot/imported/Console-Cheap_Metal053B_1K-JPG_Color.jpg-7110ac96aaf66197e820b0296fbca9db.s3tc.ctex"]
+source_file="res://assets/Console-Cheap_Metal027_1K-JPG_Color.jpg"
+dest_files=["res://.godot/imported/Console-Cheap_Metal027_1K-JPG_Color.jpg-82c0b10d596bcf48625248e18af60921.s3tc.ctex"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://1y0k78ap4gg8"
-path="res://.godot/imported/Console-Cheap.glb-245407eb9c7f6e5046786994b9f97802.scn"
+uid="uid://b3odae5yuagfx"
+path="res://.godot/imported/Console-Cheap.glb-63183d76da35242d6b436d1b6c84b09a.scn"
 
 [deps]
 
-source_file="res://assets/models/Console-Cheap.glb"
-dest_files=["res://.godot/imported/Console-Cheap.glb-245407eb9c7f6e5046786994b9f97802.scn"]
+source_file="res://assets/Console-Cheap.glb"
+dest_files=["res://.godot/imported/Console-Cheap.glb-63183d76da35242d6b436d1b6c84b09a.scn"]
 
 [params]
 
