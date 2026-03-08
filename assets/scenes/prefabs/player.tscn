@@ -30,4 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 script = ExtResource("2_hsig1")
 interact_distance = 3.0
 
+[node name="InteractRay" type="RayCast3D" parent="CameraPivot/Camera"]
+target_position = Vector3(0, 0, -1.5)
+
 [node name="HUD" parent="." instance=ExtResource("3_0dsn2")]

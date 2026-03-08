@@ -165,4 +165,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.90613, 0)
 transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 0.218805, 1.24682, -0.950552)
 
 [node name="Console-Cheap" parent="." instance=ExtResource("7_l7egs")]
-transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 2.8192, 0.5, 0)
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 2.819, 0.5, 0)

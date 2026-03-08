@@ -1,9 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0e5ansvwdh65"]
+[gd_scene load_steps=18 format=3 uid="uid://c0e5ansvwdh65"]
 
 [ext_resource type="Texture2D" uid="uid://ddprscrpsofah" path="res://demo/assets/textures/ground037_alb_ht.png" id="1_lctut"]
 [ext_resource type="PackedScene" uid="uid://osepyopob37i" path="res://assets/scenes/prefabs/proxy_cube.tscn" id="2_jr4r2"]
 [ext_resource type="PackedScene" uid="uid://bpe0w1c0ktqu5" path="res://assets/scenes/prefabs/cockpit.tscn" id="3_jr4r2"]
 [ext_resource type="PackedScene" uid="uid://ca42al51cvxtp" path="res://assets/scenes/prefabs/player.tscn" id="3_qyy83"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jr4r2"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_nkwfe"]
+sky_material = SubResource("ProceduralSkyMaterial_jr4r2")
+
+[sub_resource type="Environment" id="Environment_w3abf"]
+background_mode = 2
+sky = SubResource("Sky_nkwfe")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_t7ljo"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -88,6 +101,9 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 
 [node name="Expedition" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w3abf")
+
 [node name="Terrain" type="Terrain3D" parent="."]
 data_directory = "res://data-directory"
 material = SubResource("Terrain3DMaterial_nkwfe")
@@ -100,11 +116,11 @@ cast_shadows = 0
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="ProxyCube" parent="." instance=ExtResource("2_jr4r2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.405, 10, -80.8974)
-
 [node name="Player" parent="." instance=ExtResource("3_qyy83")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.545, 1.89303, -177.644)
 
 [node name="Cockpit" parent="." instance=ExtResource("3_jr4r2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.45, 1.06486, -177.864)
+
+[node name="ProxyCube" parent="." instance=ExtResource("2_jr4r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.576, 10, -78.434)
