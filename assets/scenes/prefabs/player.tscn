@@ -12,6 +12,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_eioig")
 speed = 3.0
+movement_smoothness = 10.0
 mouse_sensitivity = 0.0025
 gravity = 10
 
@@ -28,7 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="Camera" type="Camera3D" parent="CameraPivot"]
 script = ExtResource("2_hsig1")
-interact_distance = 3.0
 
 [node name="InteractRay" type="RayCast3D" parent="CameraPivot/Camera"]
 target_position = Vector3(0, 0, -1.5)

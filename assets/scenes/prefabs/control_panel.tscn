@@ -73,6 +73,8 @@ script = ExtResource("2_60wqy")
 script = ExtResource("2_ld4wi")
 action_name = "right"
 drill_node_path = "/root/Expedition/ProxyCube"
+press_depth = 0.02
+press_time = 0.15
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane_002" index="0"]
 
@@ -83,6 +85,8 @@ shape = SubResource("ConvexPolygonShape3D_60wqy")
 script = ExtResource("2_ld4wi")
 action_name = "forward"
 drill_node_path = "/root/Expedition/ProxyCube"
+press_depth = 0.02
+press_time = 0.15
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane_003" index="0"]
 
@@ -93,6 +97,8 @@ shape = SubResource("ConvexPolygonShape3D_cs20e")
 script = ExtResource("2_ld4wi")
 action_name = "backward"
 drill_node_path = "/root/Expedition/ProxyCube"
+press_depth = 0.02
+press_time = 0.15
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane_004" index="0"]
 
@@ -103,6 +109,8 @@ shape = SubResource("ConvexPolygonShape3D_3ju80")
 script = ExtResource("2_ld4wi")
 action_name = "left"
 drill_node_path = "/root/Expedition/ProxyCube"
+press_depth = 0.02
+press_time = 0.15
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane_005" index="0"]
 
