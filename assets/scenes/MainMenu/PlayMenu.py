@@ -26,7 +26,7 @@ class PlayMenu(Control):
 
         if success:
             print("New account created successfully")
-            self.get_tree().change_scene_to_file("res://scenes/ScannerConsole.tscn")
+            self.get_tree().change_scene_to_file("res://Scenes/ScannerConsole.tscn")
         else:
             print("Failed to create new account")
 
@@ -37,7 +37,7 @@ class PlayMenu(Control):
 
         if success:
             print("Account loaded successfully")
-            self.get_tree().change_scene_to_file("res://scenes/ScannerConsole.tscn")
+            self.get_tree().change_scene_to_file("res://Scenes/ScannerConsole.tscn")
         else:
             print("Failed to load account")
 
