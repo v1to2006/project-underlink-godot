@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://osepyopob37i"]
+
+[ext_resource type="Script" path="res://assets/scripts/gameplay/DrillProxy.py" id="1_pk07a"]
+[ext_resource type="Script" path="res://assets/scripts/gameplay/MapCameraFollow.py" id="2_k10jn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tavg2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pk07a"]
+
+[node name="ProxyCube" type="MeshInstance3D"]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_tavg2")
+script = ExtResource("1_pk07a")
+max_move_speed = 8.0
+move_acceleration = 3.5
+move_deceleration = 2.5
+max_turn_speed_degrees = 60.0
+turn_acceleration_degrees = 140.0
+turn_deceleration_degrees = 120.0
+debug_log_enabled = true
+debug_log_interval = 0.25
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.644337, 0)
+omni_range = 11.041
+omni_attenuation = 5.19
+
+[node name="CrashArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrashArea"]
+shape = SubResource("BoxShape3D_pk07a")
+
+[node name="MapAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.07, 0)
+
+[node name="SubViewport" type="SubViewport" parent="MapAnchor"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="MapAnchor/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+fov = 70.0
+near = 0.001
+script = ExtResource("2_k10jn")

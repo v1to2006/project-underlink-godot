@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b5c68rchc2wtn"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Crosshair" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(4, 4)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2

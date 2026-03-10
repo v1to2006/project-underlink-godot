@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca42al51cvxtp"]
+[gd_scene load_steps=6 format=3 uid="uid://ca42al51cvxtp"]
 
 [ext_resource type="Script" path="res://assets/scripts/gameplay/player/PlayerMotion.py" id="1_eioig"]
+[ext_resource type="Script" path="res://assets/scripts/gameplay/player/PlayerInteractor.py" id="2_hsig1"]
+[ext_resource type="PackedScene" uid="uid://b5c68rchc2wtn" path="res://assets/scenes/prefabs/hud.tscn" id="3_0dsn2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2yamf"]
 
@@ -9,14 +11,26 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_eioig")
+speed = 3.0
+mouse_sensitivity = 0.0025
+gravity = 10
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_2yamf")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_06qtw")
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="Camera" type="Camera3D" parent="CameraPivot"]
+script = ExtResource("2_hsig1")
+interact_distance = 3.0
+
+[node name="InteractRay" type="RayCast3D" parent="CameraPivot/Camera"]
+target_position = Vector3(0, 0, -1.5)
+
+[node name="HUD" parent="." instance=ExtResource("3_0dsn2")]

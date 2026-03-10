@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3a3dc6ee8lcc"]
+
+[ext_resource type="PackedScene" uid="uid://1y0k78ap4gg8" path="res://assets/models/Console-Cheap.glb" id="1_cs20e"]
+[ext_resource type="Script" path="res://assets/scripts/gameplay/DrillStatusLabel.py" id="2_3ju80"]
+[ext_resource type="Script" path="res://assets/scripts/gameplay/MapRenderer.py" id="2_60wqy"]
+[ext_resource type="Script" path="res://assets/scripts/gameplay/CockpitButton.py" id="2_ld4wi"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ld4wi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld4wi"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ld4wi")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_60wqy"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_60wqy"]
+points = PackedVector3Array(0.269777, 0.0842718, 0.0350216, -0.219777, 0.0536746, -0.217383, -0.219777, 0.0919211, -0.217383, -0.219777, 0.0536746, 0.218627, 0.155008, 0.0536746, -0.202061, -0.219777, 0.0919211, 0.218627, 0.139721, 0.0536746, 0.218627, 0.139721, 0.0919211, -0.217383, 0.139721, 0.0919211, 0.218627, 0.269777, 0.0613314, -0.0337771, 0.22387, 0.0919211, -0.102619, 0.216202, 0.0536746, 0.111503, 0.139721, 0.0536746, -0.217383, 0.22387, 0.0919211, 0.103863, 0.216202, 0.0536746, -0.110258, 0.26211, 0.0613314, 0.0503007, 0.269777, 0.0842718, -0.0337771, 0.155008, 0.0536746, 0.203305, 0.155008, 0.0919211, 0.203305, 0.26211, 0.0613314, -0.0490563, 0.155008, 0.0919211, -0.202061, 0.269777, 0.0613314, 0.0350216, 0.193249, 0.0919211, -0.148499, 0.26211, 0.0842718, 0.0503007, 0.193249, 0.0536746, -0.148499, 0.208583, 0.0536746, 0.126824)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cs20e"]
+points = PackedVector3Array(0.269777, 0.0842718, 0.0350216, -0.219777, 0.0536746, -0.217383, -0.219777, 0.0919211, -0.217383, -0.219777, 0.0536746, 0.218627, 0.155008, 0.0536746, -0.202061, -0.219777, 0.0919211, 0.218627, 0.139721, 0.0536746, 0.218627, 0.139721, 0.0919211, -0.217383, 0.139721, 0.0919211, 0.218627, 0.269777, 0.0613314, -0.0337771, 0.22387, 0.0919211, -0.102619, 0.216202, 0.0536746, 0.111503, 0.139721, 0.0536746, -0.217383, 0.22387, 0.0919211, 0.103863, 0.216202, 0.0536746, -0.110258, 0.26211, 0.0613314, 0.0503007, 0.269777, 0.0842718, -0.0337771, 0.155008, 0.0536746, 0.203305, 0.155008, 0.0919211, 0.203305, 0.26211, 0.0613314, -0.0490563, 0.155008, 0.0919211, -0.202061, 0.269777, 0.0613314, 0.0350216, 0.193249, 0.0919211, -0.148499, 0.26211, 0.0842718, 0.0503007, 0.193249, 0.0536746, -0.148499, 0.208583, 0.0536746, 0.126824)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ju80"]
+points = PackedVector3Array(0.269777, 0.0842718, 0.0350216, -0.219777, 0.0536746, -0.217383, -0.219777, 0.0919211, -0.217383, -0.219777, 0.0536746, 0.218627, 0.155008, 0.0536746, -0.202061, -0.219777, 0.0919211, 0.218627, 0.139721, 0.0536746, 0.218627, 0.139721, 0.0919211, -0.217383, 0.139721, 0.0919211, 0.218627, 0.269777, 0.0613314, -0.0337771, 0.22387, 0.0919211, -0.102619, 0.216202, 0.0536746, 0.111503, 0.139721, 0.0536746, -0.217383, 0.22387, 0.0919211, 0.103863, 0.216202, 0.0536746, -0.110258, 0.26211, 0.0613314, 0.0503007, 0.269777, 0.0842718, -0.0337771, 0.155008, 0.0536746, 0.203305, 0.155008, 0.0919211, 0.203305, 0.26211, 0.0613314, -0.0490563, 0.155008, 0.0919211, -0.202061, 0.269777, 0.0613314, 0.0350216, 0.193249, 0.0919211, -0.148499, 0.26211, 0.0842718, 0.0503007, 0.193249, 0.0536746, -0.148499, 0.208583, 0.0536746, 0.126824)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4lpm1"]
+points = PackedVector3Array(0.269777, 0.0842718, 0.0350216, -0.219777, 0.0536746, -0.217383, -0.219777, 0.0919211, -0.217383, -0.219777, 0.0536746, 0.218627, 0.155008, 0.0536746, -0.202061, -0.219777, 0.0919211, 0.218627, 0.139721, 0.0536746, 0.218627, 0.139721, 0.0919211, -0.217383, 0.139721, 0.0919211, 0.218627, 0.269777, 0.0613314, -0.0337771, 0.22387, 0.0919211, -0.102619, 0.216202, 0.0536746, 0.111503, 0.139721, 0.0536746, -0.217383, 0.22387, 0.0919211, 0.103863, 0.216202, 0.0536746, -0.110258, 0.26211, 0.0613314, 0.0503007, 0.269777, 0.0842718, -0.0337771, 0.155008, 0.0536746, 0.203305, 0.155008, 0.0919211, 0.203305, 0.26211, 0.0613314, -0.0490563, 0.155008, 0.0919211, -0.202061, 0.269777, 0.0613314, 0.0350216, 0.193249, 0.0919211, -0.148499, 0.26211, 0.0842718, 0.0503007, 0.193249, 0.0536746, -0.148499, 0.208583, 0.0536746, 0.126824)
+
+[node name="Console-Cheap" instance=ExtResource("1_cs20e")]
+
+[node name="XPositionLabel" type="Label3D" parent="Cube_012" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 0.999999, 0, -1, 0, -4.37114e-08, 0.10721, 0.00368047, 0.000124931)
+modulate = Color(0, 1, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "X: 123"
+font_size = 102
+script = ExtResource("2_3ju80")
+drill_node_path = "/root/Expedition/ProxyCube"
+value_type = "x"
+prefix = "X"
+decimals = 0
+
+[node name="YPositionLabel" type="Label3D" parent="Cube_009" index="0"]
+transform = Transform3D(-4.53438e-08, 0, 1, 1.16415e-10, 0.999999, -3.72529e-09, -1, -2.32831e-10, -4.38158e-08, 0.10721, 0.00368053, 0.000124931)
+modulate = Color(0, 1, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "Y: 123"
+font_size = 102
+script = ExtResource("2_3ju80")
+drill_node_path = "/root/Expedition/ProxyCube"
+value_type = "z"
+prefix = "Y"
+decimals = 0
+
+[node name="RotationLabel" type="Label3D" parent="Cube_009" index="1"]
+transform = Transform3D(-4.73228e-08, 5.96046e-08, 1, 2.32831e-10, 0.999999, -3.72529e-09, -1, -3.49246e-10, -4.38195e-08, 0.0996637, 0.0126165, -8.38512)
+modulate = Color(0, 1, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "R: 123"
+font_size = 102
+script = ExtResource("2_3ju80")
+drill_node_path = "/root/Expedition/ProxyCube"
+value_type = "rotation"
+prefix = "R"
+decimals = 0
+
+[node name="Cube_001" parent="." index="8"]
+transform = Transform3D(0.00225095, 0.00108695, -0.499994, -0.070295, 0.495033, 0.000759703, 0.495029, 0.0702907, 0.00238141, -0.00564331, 0.526379, -0.209938)
+material_override = SubResource("StandardMaterial3D_ld4wi")
+mesh = SubResource("PlaneMesh_60wqy")
+script = ExtResource("2_60wqy")
+
+[node name="Plane_002" parent="." index="10"]
+script = ExtResource("2_ld4wi")
+action_name = "right"
+drill_node_path = "/root/Expedition/ProxyCube"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_002" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_002/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_60wqy")
+
+[node name="Plane_003" parent="." index="11"]
+script = ExtResource("2_ld4wi")
+action_name = "forward"
+drill_node_path = "/root/Expedition/ProxyCube"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_003" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_003/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_cs20e")
+
+[node name="Plane_004" parent="." index="12"]
+script = ExtResource("2_ld4wi")
+action_name = "backward"
+drill_node_path = "/root/Expedition/ProxyCube"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_004" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_004/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_3ju80")
+
+[node name="Plane_005" parent="." index="13"]
+script = ExtResource("2_ld4wi")
+action_name = "left"
+drill_node_path = "/root/Expedition/ProxyCube"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_005" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_005/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_4lpm1")
