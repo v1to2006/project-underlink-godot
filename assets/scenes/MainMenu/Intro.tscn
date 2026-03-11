@@ -1,0 +1,83 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm33x0y6k6fhs"]
+
+[ext_resource type="Script" path="res://assets/scripts/UI/Intro.py" id="1_3ypyq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ypyq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DEEP DRIFT
+"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MISSION BRIEF
+"
+horizontal_alignment = 1
+
+[node name="LoreLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "A week ago, five civilian evacuation flights vanished during a transoceanic storm front.
+No distress signals. No confirmed wreckage. No survivors found.
+
+You are operating a deep salvage drill in a collapsed hazard zone where conventional aircraft and ships cannot safely enter.
+Your job is to follow the route, establish terminal links with each airport signal, and recover any remaining survivor data."
+horizontal_alignment = 1
+
+[node name="InstructionsLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+INSTRUCTIONS
+
+- Follow the terminal coordinates to the next airport
+- Reach the active airport marker
+- Use the terminal to establish connection
+- After each connection, scan for the next airport
+- Avoid walls, terrain, and hazard zones
+- Collision means total loss of drill and expedition
+
+Only one airport is active at a time.
+"
+
+[node name="StartExpedition" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Expedition"

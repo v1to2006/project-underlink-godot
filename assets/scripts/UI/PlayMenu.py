@@ -46,15 +46,15 @@ class PlayMenu(Control):
             self.status_label.text = "Failed to start new game"
             return
 
-        self.get_tree().change_scene_to_file("res://assets/scenes/Expedition.tscn")
+        self.get_tree().change_scene_to_file("res://assets/scenes/MainMenu/Intro.tscn")
 
     def _on_continue_pressed(self) -> None:
         if not self.game_data.has_active_save():
             self.status_label.text = "No active save to continue"
             return
 
-        self.status_label.text = "LOADING EXPEDITION..."
-        self.get_tree().change_scene_to_file("res://assets/scenes/Expedition.tscn")
+        self.status_label.text = "LOADING BRIEFING..."
+        self.get_tree().change_scene_to_file("res://assets/scenes/MainMenu/Intro.tscn")
 
     def _on_logout_pressed(self) -> None:
         self.game_data.logout()

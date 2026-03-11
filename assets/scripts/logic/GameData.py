@@ -64,11 +64,10 @@ class GameData(Node):
     def _ready(self) -> None:
         self.input = Input.instance()
         self.backend = BackendHttp(self.backend_base_url)
+        self.clear_session()
 
         self.console = None
         self.world_airports_controller = None
-
-        self.clear_session()
 
     def clear_session(self) -> None:
         self.username = ""

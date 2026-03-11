@@ -8,7 +8,13 @@ from py4godot.classes.Node import Node
 class EventManager(Node):
 
     def _ready(self) -> None:
-        self.popup = self.get_node("../Control/EventPopup")
+        popup_node = self.get_node("/root/Expedition/Control/EventPopup")
+        if popup_node is None:
+            print("EventManager: EventPopup node not found")
+            self.popup = None
+        else:
+            self.popup = popup_node.get_pyscript()
+
         self.current_zone = None
 
         self.events = {
@@ -57,9 +63,12 @@ class EventManager(Node):
             print("Unknown zone type:", zone_type)
             return
 
+        if self.popup is None:
+            print("EventManager: popup is missing")
+            return
+
         event_data = random.choice(self.events[zone_type])
 
-        # Pause the game while choice is made
         self.get_tree().paused = True
         self.popup.show_event(event_data, self)
 
@@ -70,7 +79,6 @@ class EventManager(Node):
             print("SAFE PASSAGE")
 
             if self.current_zone is not None:
-                # remove or disable zone after success so it won't repeat
                 self.current_zone.queue_free()
                 self.current_zone = None
         else:
@@ -79,4 +87,4 @@ class EventManager(Node):
 
     def _handle_death(self) -> None:
         self.get_tree().paused = False
-        self.get_tree().change_scene_to_file("res://scenes/MainMenu/PlayMenu.tscn")
+        self.get_tree().change_scene_to_file("res://assets/scenes/MainMenu/PlayMenu.tscn")
