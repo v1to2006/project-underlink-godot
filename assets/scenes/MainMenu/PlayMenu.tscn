@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://chga1bfuwslhr"]
 
-[ext_resource type="Script" path="res://assets/scenes/MainMenu/PlayMenu.py" id="1_j6ya8"]
+[ext_resource type="Script" path="res://assets/scripts/UI/PlayMenu.py" id="1_j6ya8"]
 [ext_resource type="FontFile" uid="uid://djhuh6wn7dinb" path="res://assets/scenes/MainMenu/Game Of Squids.ttf" id="1_kom0f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kom0f"]
@@ -40,6 +40,7 @@ bg_color = Color(0.533333, 0.0117647, 0.164706, 1)
 bg_color = Color(0.576471, 0.45098, 0.141176, 1)
 
 [node name="PlayMenu" type="Control"]
+process_mode = 3
 z_index = 2
 layout_mode = 3
 anchors_preset = 15
@@ -151,5 +152,12 @@ theme_override_font_sizes/font_size = 14
 text = "System Ready"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="LoggedInLabel" type="Label" parent="CenterContainer/TerminalPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Logout" type="Button" parent="CenterContainer/TerminalPanel/VBoxContainer"]
+layout_mode = 2
+text = "Logout"
 
 [node name="FlickerTimer" type="Timer" parent="."]

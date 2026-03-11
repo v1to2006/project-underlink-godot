@@ -25,7 +25,6 @@ class PlayerMotion(CharacterBody3D):
     def _physics_process(self, delta: float) -> None:
         self._handle_motion(delta)
         self._apply_gravity(delta)
-        self._handle_cursor()
         self.move_and_slide()
 
     def _handle_motion(self, delta: float) -> None:
@@ -63,10 +62,6 @@ class PlayerMotion(CharacterBody3D):
         head_rotation = self.head.rotation
         head_rotation.x = self._pitch
         self.head.rotation = head_rotation
-
-    def _handle_cursor(self) -> None:
-        if self.input.is_action_just_pressed("ui_cancel"):
-            self.input.set_mouse_mode(0)
 
     def _apply_gravity(self, delta: float) -> None:
         current_velocity = self.velocity

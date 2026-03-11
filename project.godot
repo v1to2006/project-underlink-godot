@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Deep Drift"
-run/main_scene="uid://c0e5ansvwdh65"
+run/main_scene="uid://d4m0l5stnk67f"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
 GameData="*res://assets/scripts/logic/GameData.py"
+
+[display]
+
+window/size/mode=3
 
 [editor]
 

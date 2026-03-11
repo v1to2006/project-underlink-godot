@@ -56,12 +56,19 @@ class BackendHttp:
 
 @gdclass
 class GameData(Node):
-    username: str = "newUser123"
     backend_base_url: str = "http://127.0.0.1:5000"
     proxy_cube_node_path: str = "/root/Expedition/ProxyCube"
 
     def _ready(self) -> None:
         self.backend = BackendHttp(self.backend_base_url)
+        self.clear_session()
+
+        self.console = None
+        self.world_airports_controller = None
+
+    def clear_session(self) -> None:
+        self.username = ""
+        self.player_id = 0
 
         self.route = []
         self.opened_airports = []
@@ -71,61 +78,68 @@ class GameData(Node):
         self.current_airport_point = None
         self.current_airport_data = {}
 
-        self.console = None
-        self.world_airports_controller = None
+    def is_logged_in(self) -> bool:
+        return self.username != ""
 
-        self.login_or_start_game()
+    def has_active_save(self) -> bool:
+        return len(self.route) > 0
 
-    def register_console(self, console) -> None:
-        self.console = console
-        self.refresh_console_idle()
+    def login(self, username: str) -> bool:
+        username = username.strip()
 
-    def register_world_airports_controller(self, controller) -> None:
-        self.world_airports_controller = controller
-        self._refresh_world_airports()
-        self._move_proxy_to_checkpoint()
-        self.refresh_console_idle()
+        if username == "":
+            return False
 
-    def login_or_start_game(self) -> None:
         login_data = self.backend.post_json(
             "/login",
+            {
+                "username": username,
+            },
+        )
+
+        if not login_data:
+            return False
+
+        self._apply_login_data(login_data)
+        self._sync_runtime_state()
+        return True
+
+    def start_new_game(self) -> bool:
+        if not self.is_logged_in():
+            return False
+
+        start_data = self.backend.post_json(
+            "/start",
             {
                 "username": self.username,
             },
         )
 
-        if not login_data:
-            self._show_console_error("Login failed.")
-            return
+        if not start_data:
+            return False
 
+        self.route = list(start_data.get("route", []))
+        self.progress_index = int(start_data.get("progress_index", 0))
+        self.completed = bool(start_data.get("completed", False))
+        self.opened_airports = []
+
+        self.current_airport_point = None
+        self.current_airport_data = {}
+
+        self._sync_runtime_state()
+        return True
+
+    def logout(self) -> None:
+        self.clear_session()
+
+    def _apply_login_data(self, login_data: dict) -> None:
+        self.player_id = int(login_data.get("player_id", 0))
+        self.username = login_data.get("username", "")
         self.progress_index = int(login_data.get("progress_index", 0))
         self.completed = bool(login_data.get("completed", False))
         self.opened_airports = list(login_data.get("opened_airports", []))
 
         route_codes = list(login_data.get("route", []))
-
-        if len(route_codes) == 0:
-            start_data = self.backend.post_json(
-                "/start",
-                {
-                    "username": self.username,
-                },
-            )
-
-            if not start_data:
-                self._show_console_error("Start failed.")
-                return
-
-            self.route = list(start_data.get("route", []))
-            self.progress_index = int(start_data.get("progress_index", 0))
-            self.completed = bool(start_data.get("completed", False))
-            self.opened_airports = []
-
-            self._refresh_world_airports()
-            self._move_proxy_to_checkpoint()
-            self.refresh_console_idle()
-            return
-
         self.route = []
 
         for order_index, icao_code in enumerate(route_codes, start=1):
@@ -150,6 +164,15 @@ class GameData(Node):
                     }
                 )
 
+        self.current_airport_point = None
+        self.current_airport_data = {}
+
+    def register_console(self, console) -> None:
+        self.console = console
+        self.refresh_console_idle()
+
+    def register_world_airports_controller(self, controller) -> None:
+        self.world_airports_controller = controller
         self._refresh_world_airports()
         self._move_proxy_to_checkpoint()
         self.refresh_console_idle()
@@ -281,6 +304,11 @@ class GameData(Node):
             self.get_next_airport_display_coordinates(),
             self.completed,
         )
+
+    def _sync_runtime_state(self) -> None:
+        self._refresh_world_airports()
+        self._move_proxy_to_checkpoint()
+        self.refresh_console_idle()
 
     def _refresh_world_airports(self) -> None:
         if self.world_airports_controller is None:
