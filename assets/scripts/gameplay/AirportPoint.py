@@ -1,57 +1,73 @@
 from py4godot import gdclass
 from py4godot.classes.Node3D import Node3D
 from py4godot.classes.Area3D import Area3D
-from py4godot.classes.Label3D import Label3D
 
 
 @gdclass
 class AirportPoint(Node3D):
     def _ready(self) -> None:
-        self.airport_data: dict = {}
-        self.slot_index: int = -1
+        game_data_node = self.get_node("/root/GameData")
+        self.game_data = game_data_node.get_pyscript()
 
-        self.label_3d: Label3D = self.get_node("Label3D")
+        self.airport_data = {}
+        self.slot_index = -1
+
         self.trigger_area: Area3D = self.get_node("TriggerArea")
+        self.map_mark = self.get_node("MapMark")
+        self.omni_light = self.get_node("OmniLight3D")
 
-        self.trigger_area.connect("body_entered", self._on_body_entered)
+        self.trigger_area.area_entered.connect(self._on_area_entered)
+        self.trigger_area.area_exited.connect(self._on_area_exited)
 
-        self.label_3d.text = "UNASSIGNED"
+        self.hide_completely()
 
     def assign_airport(self, slot_index: int, airport_data: dict) -> None:
         self.slot_index = slot_index
         self.airport_data = airport_data
 
-        airport_name = airport_data.get("name", "Unknown Airport")
-        icao_code = airport_data.get("icao_code", "UNKNOWN")
+    def show_only_this_airport(self) -> None:
+        if self.map_mark is not None:
+            self.map_mark.visible = True
 
-        self.label_3d.text = f"{slot_index + 1}. {icao_code}\n{airport_name}"
+        if self.omni_light is not None:
+            self.omni_light.visible = True
+
+        if self.trigger_area is not None:
+            self.trigger_area.monitoring = True
+            self.trigger_area.monitorable = True
+
+    def hide_completely(self) -> None:
+        if self.map_mark is not None:
+            self.map_mark.visible = False
+
+        if self.omni_light is not None:
+            self.omni_light.visible = False
+
+        if self.trigger_area is not None:
+            self.trigger_area.monitoring = False
+            self.trigger_area.monitorable = False
 
     def set_visual_state(self, is_active: bool, is_completed: bool, is_locked: bool) -> None:
-        if is_completed:
-            self.label_3d.text = self.label_3d.text + "\n[COMPLETED]"
-            return
-
         if is_active:
-            self.label_3d.text = self.label_3d.text + "\n[ACTIVE]"
+            self.show_only_this_airport()
             return
 
-        if is_locked:
-            self.label_3d.text = self.label_3d.text + "\n[LOCKED]"
+        self.hide_completely()
 
-    def clear_state_suffix(self) -> None:
-        if not self.airport_data:
-            self.label_3d.text = "UNASSIGNED"
+    def _on_area_entered(self, area) -> None:
+        if area is None:
             return
 
-        airport_name = self.airport_data.get("name", "Unknown Airport")
-        icao_code = self.airport_data.get("icao_code", "UNKNOWN")
-        self.label_3d.text = f"{self.slot_index + 1}. {icao_code}\n{airport_name}"
-
-    def _on_body_entered(self, body) -> None:
-        if body is None:
+        if area.get_name() != "CrashArea":
             return
 
-        if not body.is_in_group("player"):
+        self.game_data.on_airport_reached(self)
+
+    def _on_area_exited(self, area) -> None:
+        if area is None:
             return
 
-        GameData.on_airport_reached(self)
+        if area.get_name() != "CrashArea":
+            return
+
+        self.game_data.on_airport_left(self)

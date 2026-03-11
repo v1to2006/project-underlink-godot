@@ -57,7 +57,6 @@ class DrillProxy(Node3D):
 
 		self._update_rotation(delta)
 		self._update_movement(delta)
-		self._debug_log_position(delta)
 
 	def _update_movement(self, delta: float) -> None:
 		move_input = 0
@@ -126,13 +125,3 @@ class DrillProxy(Node3D):
 				current = target
 
 		return current
-
-	def _debug_log_position(self, delta: float) -> None:
-		if not self.debug_log_enabled:
-			return
-
-		self._debug_log_timer -= delta
-		if self._debug_log_timer > 0.0:
-			return
-
-		self._debug_log_timer = self.debug_log_interval

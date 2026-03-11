@@ -15,29 +15,36 @@ script = ExtResource("2_j1l4y")
 shape = SubResource("ConvexPolygonShape3D_pejt1")
 
 [node name="TitleLabel3D" type="Label3D" parent="." index="2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, 0, 0)
-modulate = Color(1, 0, 0, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, 0.689601, 0)
+modulate = Color(0, 0.65, 0, 1)
 outline_modulate = Color(0, 0, 0, 0)
 text = "Airport not detected"
-font_size = 16
+font_size = 12
 
 [node name="StatusLabel3D" type="Label3D" parent="." index="3"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, 0, 0)
-modulate = Color(1, 0, 0, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, 0.544607, 0)
+modulate = Color(0, 0.65, 0, 1)
 outline_modulate = Color(0, 0, 0, 0)
 text = "Airport not detected"
-font_size = 16
+font_size = 10
 
 [node name="InfoLabel3D" type="Label3D" parent="." index="4"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, 0, 0)
-modulate = Color(1, 0, 0, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, -0.032231, 0)
+modulate = Color(0, 0.65, 0, 1)
 outline_modulate = Color(0, 0, 0, 0)
 text = "Airport not detected"
-font_size = 16
+font_size = 10
 
 [node name="ActionLabel3D" type="Label3D" parent="." index="5"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, 0, 0)
-modulate = Color(1, 0, 0, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, -0.452799, 0)
+modulate = Color(0, 0.65, 0, 1)
 outline_modulate = Color(0, 0, 0, 0)
 text = "Airport not detected"
-font_size = 16
+font_size = 10
+
+[node name="HintLabel3D" type="Label3D" parent="." index="6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, -0.638349, 0)
+modulate = Color(0, 0.65, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "Airport not detected"
+font_size = 10

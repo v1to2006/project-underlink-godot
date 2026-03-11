@@ -1,26 +1,74 @@
+import json
+import urllib.request
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 
 from py4godot import gdclass
 from py4godot.classes.Node import Node
 
-from BackendHttp import BackendHttp
+
+class BackendHttp:
+    def __init__(self, base_url: str) -> None:
+        self.base_url = base_url.rstrip("/")
+
+    def get_json(self, path: str) -> dict:
+        try:
+            url = f"{self.base_url}{path}"
+
+            with urllib.request.urlopen(url, timeout=5) as response:
+                response_text = response.read().decode("utf-8")
+                return json.loads(response_text)
+
+        except HTTPError as error:
+            print(f"[BackendHttp] HTTPError GET {path}: {error}")
+        except URLError as error:
+            print(f"[BackendHttp] URLError GET {path}: {error}")
+        except Exception as error:
+            print(f"[BackendHttp] Exception GET {path}: {error}")
+
+        return {}
+
+    def post_json(self, path: str, payload: dict) -> dict:
+        try:
+            url = f"{self.base_url}{path}"
+            body = json.dumps(payload).encode("utf-8")
+
+            request = urllib.request.Request(
+                url,
+                data=body,
+                headers={"Content-Type": "application/json"},
+                method="POST",
+            )
+
+            with urllib.request.urlopen(request, timeout=5) as response:
+                response_text = response.read().decode("utf-8")
+                return json.loads(response_text)
+
+        except HTTPError as error:
+            print(f"[BackendHttp] HTTPError POST {path}: {error}")
+        except URLError as error:
+            print(f"[BackendHttp] URLError POST {path}: {error}")
+        except Exception as error:
+            print(f"[BackendHttp] Exception POST {path}: {error}")
+
+        return {}
 
 
 @gdclass
 class GameData(Node):
-    username: str = "v1to"
+    username: str = "v1toasdasd"
     backend_base_url: str = "http://127.0.0.1:5000"
 
     def _ready(self) -> None:
         self.backend = BackendHttp(self.backend_base_url)
 
-        self.route: list[dict] = []
-        self.opened_airports: list[str] = []
-        self.progress_index: int = 0
-        self.completed: bool = False
+        self.route = []
+        self.opened_airports = []
+        self.progress_index = 0
+        self.completed = False
 
         self.current_airport_point = None
-        self.current_airport_data: dict = {}
+        self.current_airport_data = {}
 
         self.console = None
         self.world_airports_controller = None
@@ -29,10 +77,12 @@ class GameData(Node):
 
     def register_console(self, console) -> None:
         self.console = console
+        self.refresh_console_idle()
 
     def register_world_airports_controller(self, controller) -> None:
         self.world_airports_controller = controller
         self._refresh_world_airports()
+        self.refresh_console_idle()
 
     def login_or_start_game(self) -> None:
         login_data = self.backend.post_json(
@@ -68,10 +118,13 @@ class GameData(Node):
             self.progress_index = int(start_data.get("progress_index", 0))
             self.completed = bool(start_data.get("completed", False))
             self.opened_airports = []
+
             self._refresh_world_airports()
+            self.refresh_console_idle()
             return
 
         self.route = []
+
         for order_index, icao_code in enumerate(route_codes, start=1):
             airport_info = self.get_airport_info(icao_code)
 
@@ -95,6 +148,7 @@ class GameData(Node):
                 )
 
         self._refresh_world_airports()
+        self.refresh_console_idle()
 
     def get_airport_info(self, icao_code: str) -> dict:
         query = urlencode({"icao_code": icao_code})
@@ -103,7 +157,27 @@ class GameData(Node):
     def get_next_airport(self) -> dict:
         if self.progress_index >= len(self.route):
             return {}
+
         return self.route[self.progress_index]
+
+    def get_next_airport_point_node(self):
+        if self.world_airports_controller is None:
+            return None
+
+        return self.world_airports_controller.get_active_airport_point_node()
+
+    def get_next_airport_display_coordinates(self) -> dict:
+        airport_point_node = self.get_next_airport_point_node()
+
+        if airport_point_node is None:
+            return {}
+
+        position = airport_point_node.global_position
+
+        return {
+            "x": round(position.x, 1),
+            "y": round(position.z, 1),
+        }
 
     def is_airport_next(self, icao_code: str) -> bool:
         next_airport = self.get_next_airport()
@@ -115,20 +189,15 @@ class GameData(Node):
 
     def on_airport_reached(self, airport_point) -> None:
         if self.completed:
-            self._show_console_error("Expedition already completed.")
             return
 
         airport_data = airport_point.airport_data
         icao_code = airport_data.get("icao_code", "")
 
         if icao_code == "":
-            self._show_console_error("Airport has no ICAO code.")
             return
 
         if not self.is_airport_next(icao_code):
-            next_airport = self.get_next_airport()
-            next_code = next_airport.get("icao_code", "UNKNOWN")
-            self._show_console_error(f"Wrong airport. Next airport is {next_code}.")
             return
 
         self.current_airport_point = airport_point
@@ -137,15 +206,21 @@ class GameData(Node):
         if self.console is not None:
             self.console.show_airport_found(airport_data)
 
+    def on_airport_left(self, airport_point) -> None:
+        if self.current_airport_point != airport_point:
+            return
+
+        self.current_airport_point = None
+        self.current_airport_data = {}
+        self.refresh_console_idle()
+
     def establish_connection(self) -> None:
         if self.current_airport_point is None:
-            self._show_console_error("No airport selected.")
             return
 
         icao_code = self.current_airport_data.get("icao_code", "")
 
         if icao_code == "":
-            self._show_console_error("Invalid airport ICAO.")
             return
 
         full_airport_data = self.get_airport_info(icao_code)
@@ -170,6 +245,9 @@ class GameData(Node):
         self.completed = bool(update_data.get("completed", False))
         self.opened_airports = list(update_data.get("opened_airports", self.opened_airports))
 
+        self.current_airport_point = None
+        self.current_airport_data = {}
+
         self._refresh_world_airports()
 
         if self.console is not None:
@@ -177,7 +255,19 @@ class GameData(Node):
                 full_airport_data,
                 self.progress_index,
                 self.completed,
+                self.get_next_airport(),
+                self.get_next_airport_display_coordinates(),
             )
+
+    def refresh_console_idle(self) -> None:
+        if self.console is None:
+            return
+
+        self.console.show_idle_navigation(
+            self.get_next_airport(),
+            self.get_next_airport_display_coordinates(),
+            self.completed,
+        )
 
     def _refresh_world_airports(self) -> None:
         if self.world_airports_controller is None:

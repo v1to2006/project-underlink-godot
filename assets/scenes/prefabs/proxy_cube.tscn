@@ -8,9 +8,9 @@
 [node name="ProxyCube" type="MeshInstance3D"]
 cast_shadow = 0
 script = ExtResource("1_pk07a")
-max_move_speed = 8.0
+max_move_speed = 10.0
 move_acceleration = 3.5
-move_deceleration = 2.5
+move_deceleration = 5.0
 max_turn_speed_degrees = 60.0
 turn_acceleration_degrees = 140.0
 turn_deceleration_degrees = 120.0
@@ -44,5 +44,6 @@ script = ExtResource("2_k10jn")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+visibility_range_end = 4096.0
 text = ">"
 font_size = 800

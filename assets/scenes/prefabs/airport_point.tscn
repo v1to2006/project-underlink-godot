@@ -7,18 +7,19 @@
 [node name="AirportPoint" type="Node3D"]
 script = ExtResource("1_co1up")
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="MapMark" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visibility_range_end = 4096.0
 modulate = Color(0, 0.294118, 1, 1)
 text = "X"
 font_size = 1500
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="TriggerArea" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("BoxShape3D_oe6oe")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_energy = 9.157
 omni_range = 11.933
+omni_attenuation = 9.889
