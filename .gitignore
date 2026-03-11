@@ -75,3 +75,6 @@ htmlcov/
 .AppleDesktop
 Network Trash Folder
 Temporary Items
+
+# Ignore py4godot addon
+/addons/py4godot
