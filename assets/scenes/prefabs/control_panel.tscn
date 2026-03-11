@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3a3dc6ee8lcc"]
+[gd_scene load_steps=13 format=3 uid="uid://d3a3dc6ee8lcc"]
 
 [ext_resource type="PackedScene" uid="uid://1y0k78ap4gg8" path="res://assets/models/Console-Cheap.glb" id="1_cs20e"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay/DrillStatusLabel.py" id="2_3ju80"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay/MapRenderer.py" id="2_60wqy"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay/CockpitButton.py" id="2_ld4wi"]
+[ext_resource type="AudioStream" uid="uid://dsi4uio8aqalh" path="res://assets/music/Button.mp3" id="5_4lpm1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ld4wi"]
 
@@ -81,6 +82,9 @@ press_time = 0.15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_002/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_60wqy")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Plane_002" index="1"]
+stream = ExtResource("5_4lpm1")
+
 [node name="Plane_003" parent="." index="11"]
 script = ExtResource("2_ld4wi")
 action_name = "forward"
@@ -92,6 +96,9 @@ press_time = 0.15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_003/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_cs20e")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Plane_003" index="1"]
+stream = ExtResource("5_4lpm1")
 
 [node name="Plane_004" parent="." index="12"]
 script = ExtResource("2_ld4wi")
@@ -105,6 +112,9 @@ press_time = 0.15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_004/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_3ju80")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Plane_004" index="1"]
+stream = ExtResource("5_4lpm1")
+
 [node name="Plane_005" parent="." index="13"]
 script = ExtResource("2_ld4wi")
 action_name = "left"
@@ -116,3 +126,6 @@ press_time = 0.15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_005/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_4lpm1")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Plane_005" index="1"]
+stream = ExtResource("5_4lpm1")
