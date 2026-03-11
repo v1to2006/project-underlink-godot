@@ -1,6 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://chga1bfuwslhr"]
+[gd_scene load_steps=14 format=3 uid="uid://chga1bfuwslhr"]
 
 [ext_resource type="FontFile" uid="uid://djhuh6wn7dinb" path="res://assets/scenes/MainMenu/Game Of Squids.ttf" id="1_kom0f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kom0f"]
+bg_color = Color(0.184314, 0.141176, 0.0235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6ya8"]
+bg_color = Color(0.184314, 0.141176, 0.0235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsglv"]
+bg_color = Color(0.533333, 0.0117647, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60pod"]
+bg_color = Color(0.575942, 0.451081, 0.139661, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdl40"]
+bg_color = Color(0.184314, 0.141176, 0.0235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mxp3"]
+bg_color = Color(0.184314, 0.141176, 0.0235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j8hi"]
+bg_color = Color(0.534563, 0.0131909, 0.166508, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gvkg"]
+bg_color = Color(0.576471, 0.45098, 0.141176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjnsl"]
+bg_color = Color(0.184314, 0.141176, 0.0235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdqfw"]
+bg_color = Color(0.184314, 0.141176, 0.0235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1ssv"]
+bg_color = Color(0.533333, 0.0117647, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ma7ly"]
+bg_color = Color(0.576471, 0.45098, 0.141176, 1)
 
 [node name="PlayMenu" type="Control"]
 layout_mode = 3
@@ -70,18 +106,33 @@ layout_mode = 2
 [node name="NewGame" type="Button" parent="Control/TerminalPanel/VBoxContainer"]
 modulate = Color(1, 0.921569, 0.827451, 1)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kom0f")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kom0f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j6ya8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qsglv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_60pod")
 action_mode = 0
 text = "NEW GAME"
 
 [node name="Continue" type="Button" parent="Control/TerminalPanel/VBoxContainer"]
 modulate = Color(1, 0.921025, 0.829171, 1)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kom0f")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kdl40")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7mxp3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7j8hi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3gvkg")
 action_mode = 0
 text = "CONTINUE"
 
 [node name="Quit" type="Button" parent="Control/TerminalPanel/VBoxContainer"]
 modulate = Color(1, 0.921569, 0.827451, 1)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kom0f")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bjnsl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kdqfw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b1ssv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ma7ly")
 action_mode = 0
 text = "QUIT"
 
