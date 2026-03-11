@@ -136,13 +136,3 @@ class DrillProxy(Node3D):
 			return
 
 		self._debug_log_timer = self.debug_log_interval
-
-		pos = self.global_position
-		rot = self.rotation
-
-		print(
-			str(round(pos.x, 2)) + ", "
-			+ str(round(pos.y, 2)) + ", "
-			+ str(round(pos.z, 2)) + ") "
-			+ "rot_y=" + str(round(math.degrees(rot.y), 2))
-		)

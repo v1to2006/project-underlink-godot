@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmbic3sca8nc4"]
+[gd_scene load_steps=3 format=3 uid="uid://dmbic3sca8nc4"]
+
+[ext_resource type="Script" path="res://assets/scripts/gameplay/AirportPoint.py" id="1_co1up"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oe6oe"]
 
 [node name="AirportPoint" type="Node3D"]
+script = ExtResource("1_co1up")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -17,4 +20,5 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("BoxShape3D_oe6oe")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 9.157
 omni_range = 11.933

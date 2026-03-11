@@ -1,11 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://bponxkbrfpfw"]
+[gd_scene load_steps=4 format=3 uid="uid://bponxkbrfpfw"]
 
 [ext_resource type="PackedScene" uid="uid://cpbpju0eetbsb" path="res://assets/models/OldPc.glb" id="1_pejt1"]
+[ext_resource type="Script" path="res://assets/scripts/gameplay/OldPcConsole.py" id="2_j1l4y"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pejt1"]
+points = PackedVector3Array(0.356775, -0.285075, -0.447823, 0.098632, 0.743941, 0.865636, 0.0350007, 0.79476, 0.923721, -0.0223214, -0.895011, 0.895011, -0.0223214, 0.880711, -0.909421, -0.0223214, -0.895011, -0.909421, 0.355723, 0.394716, 0.333646, 0.283375, -0.682392, 0.55255, 0.257864, 0.830334, -0.359126, 0.28347, 0.252803, -0.798768, 0.232188, -0.854319, -0.495711, -0.0223214, 0.880711, 0.895011, 0.283425, -0.188995, 0.812672, 0.232203, -0.510205, -0.840346, 0.205848, 0.848445, 0.568613, 0.356219, -0.485676, 0.233787, 0.356351, 0.396262, -0.320602, 0.258048, 0.334011, 0.846982, 0.258397, -0.851465, 0.376414, 0.20592, -0.571663, 0.867392, 0.205836, 0.580412, -0.847668, 0.0350007, -0.923721, 0.80906, 0.378738, -0.131289, 0.205804, 0.308298, -0.701978, -0.353083, 0.307521, 0.708644, 0.211685, 0.00636068, 0.909421, 0.866301, 0.0350007, -0.923721, -0.79476, 0.332274, -0.235885, 0.617376, 0.179109, 0.851186, -0.636602, 0.0350007, -0.80906, 0.923721, 0.283258, 0.641222, -0.563385, 0.307404, 0.452546, 0.620131)
 
 [node name="OldPc" instance=ExtResource("1_pejt1")]
+script = ExtResource("2_j1l4y")
 
-[node name="Label3D" type="Label3D" parent="Cube_001" index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.381, 0, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_pejt1")
+
+[node name="TitleLabel3D" type="Label3D" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, 0, 0)
+modulate = Color(1, 0, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "Airport not detected"
+font_size = 16
+
+[node name="StatusLabel3D" type="Label3D" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, 0, 0)
+modulate = Color(1, 0, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "Airport not detected"
+font_size = 16
+
+[node name="InfoLabel3D" type="Label3D" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, 0, 0)
+modulate = Color(1, 0, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "Airport not detected"
+font_size = 16
+
+[node name="ActionLabel3D" type="Label3D" parent="." index="5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.742733, 0, 0)
 modulate = Color(1, 0, 0, 1)
 outline_modulate = Color(0, 0, 0, 0)
 text = "Airport not detected"

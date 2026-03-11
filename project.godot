@@ -15,9 +15,17 @@ run/main_scene="uid://c0e5ansvwdh65"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+GameData="*res://assets/scripts/logic/GameData.py"
+
 [display]
 
 window/size/mode=3
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [editor_plugins]
 
