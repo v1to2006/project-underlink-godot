@@ -25,7 +25,7 @@ class PlayMenu(Control):
         self.btn_quit.pressed.connect(self._on_quit_pressed)
         self.btn_logout.pressed.connect(self._on_logout_pressed)
 
-        self.title_label.text = "UNDERLINK"
+        self.title_label.text = "DEEP DRIFT"
         self.subtitle_label.text = "SALVAGE NAVIGATION TERMINAL"
 
         if not self.game_data.is_logged_in():

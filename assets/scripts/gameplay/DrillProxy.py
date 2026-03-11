@@ -1,9 +1,10 @@
 import math
 from py4godot import gdclass
-from py4godot.classes.Node3D import Node3D
+from py4godot.classes.CharacterBody3D import CharacterBody3D
+
 
 @gdclass
-class DrillProxy(Node3D):
+class DrillProxy(CharacterBody3D):
     max_move_speed: float = 4.0
     move_acceleration: float = 3.5
     move_deceleration: float = 2.5
@@ -12,8 +13,7 @@ class DrillProxy(Node3D):
     turn_acceleration_degrees: float = 140.0
     turn_deceleration_degrees: float = 120.0
 
-    debug_log_enabled: bool = True
-    debug_log_interval: float = 0.25
+    crash_manager_node_path: str = "/root/Expedition/CrashManager"
 
     def _ready(self) -> None:
         self.dead: bool = False
@@ -26,7 +26,8 @@ class DrillProxy(Node3D):
         self.current_move_speed: float = 0.0
         self.current_turn_speed_degrees: float = 0.0
 
-        self._debug_log_timer: float = 0.0
+        crash_manager_node = self.get_node(self.crash_manager_node_path)
+        self.crash_manager = crash_manager_node.get_pyscript()
 
     def start_button(self, action_name: str) -> None:
         if self.dead:
@@ -72,19 +73,26 @@ class DrillProxy(Node3D):
             self.current_move_speed = self._move_toward(
                 self.current_move_speed,
                 target_speed,
-                self.move_acceleration * delta
+                self.move_acceleration * delta,
             )
         else:
             self.current_move_speed = self._move_toward(
                 self.current_move_speed,
                 0.0,
-                self.move_deceleration * delta
+                self.move_deceleration * delta,
             )
 
-        if self.current_move_speed != 0.0:
-            forward = -self.global_transform.basis.z.normalized()
-            move_offset = forward * self.current_move_speed * delta
-            self.global_position = self.global_position + move_offset
+        if self.current_move_speed == 0.0:
+            self.velocity = self.velocity * 0.0
+            return
+
+        forward = -self.global_transform.basis.z.normalized()
+        self.velocity = forward * self.current_move_speed
+
+        collision = self.move_and_collide(self.velocity * delta)
+
+        if collision is not None:
+            self._die()
 
     def _update_rotation(self, delta: float) -> None:
         turn_input = 0
@@ -100,19 +108,29 @@ class DrillProxy(Node3D):
             self.current_turn_speed_degrees = self._move_toward(
                 self.current_turn_speed_degrees,
                 target_turn_speed,
-                self.turn_acceleration_degrees * delta
+                self.turn_acceleration_degrees * delta,
             )
         else:
             self.current_turn_speed_degrees = self._move_toward(
                 self.current_turn_speed_degrees,
                 0.0,
-                self.turn_deceleration_degrees * delta
+                self.turn_deceleration_degrees * delta,
             )
 
         if self.current_turn_speed_degrees != 0.0:
             target_rotation = self.rotation
             target_rotation.y += math.radians(self.current_turn_speed_degrees) * delta
             self.rotation = target_rotation
+
+    def _die(self) -> None:
+        if self.dead:
+            return
+
+        self.dead = True
+        self.reset_motion()
+
+        if self.crash_manager is not None:
+            self.crash_manager.start_crash_sequence()
 
     def _move_toward(self, current: float, target: float, step: float) -> float:
         if current < target:
@@ -134,3 +152,4 @@ class DrillProxy(Node3D):
 
         self.current_move_speed = 0.0
         self.current_turn_speed_degrees = 0.0
+        self.velocity = self.velocity * 0.0

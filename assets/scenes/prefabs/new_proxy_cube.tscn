@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://w0xdapwb7kv0"]
+
+[ext_resource type="Script" path="res://assets/scripts/gameplay/DrillProxy.py" id="1_iw6s7"]
+[ext_resource type="Script" path="res://assets/scripts/gameplay/MapCameraFollow.py" id="1_rn25s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_txabt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iw6s7"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_iw6s7")
+max_move_speed = 10.0
+move_acceleration = 3.5
+move_deceleration = 5.0
+max_turn_speed_degrees = 60.0
+turn_acceleration_degrees = 140.0
+turn_deceleration_degrees = 120.0
+debug_log_enabled = true
+debug_log_interval = 0.25
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_txabt")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.644337, 0)
+omni_range = 11.041
+omni_attenuation = 5.19
+
+[node name="CrashArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrashArea"]
+shape = SubResource("BoxShape3D_iw6s7")
+
+[node name="MapAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+
+[node name="SubViewport" type="SubViewport" parent="MapAnchor"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="MapAnchor/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+projection = 1
+fov = 70.0
+size = 40.0
+near = 0.001
+script = ExtResource("1_rn25s")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+visibility_range_end = 4096.0
+text = ">"
+font_size = 800
