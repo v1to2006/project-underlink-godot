@@ -1,3 +1,100 @@
-[gd_scene load_steps=0 format=3 uid="uid://v4xrvp6rrrrg"]
+[gd_scene load_steps=2 format=3 uid="uid://chga1bfuwslhr"]
 
-[node name="PlayMenu" type="Node2D"]
+[ext_resource type="FontFile" uid="uid://djhuh6wn7dinb" path="res://assets/scenes/MainMenu/Game Of Squids.ttf" id="1_kom0f"]
+
+[node name="PlayMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 27.8
+anchor_bottom = 15.25
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.0470588, 0.0392157, 0.027451, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TerminalPanel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 5.0
+offset_right = 823.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TerminalPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -95.0
+offset_right = 119.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="Control/TerminalPanel/VBoxContainer"]
+modulate = Color(1, 0.678431, 0.2, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kom0f")
+theme_override_font_sizes/font_size = 30
+text = "Deepdrift"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="SubtitleLabel" type="Label" parent="Control/TerminalPanel/VBoxContainer"]
+modulate = Color(0.788235, 0.541176, 0.172549, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kom0f")
+theme_override_font_sizes/font_size = 13
+text = "The last Driller"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="SpacerTop" type="MarginContainer" parent="Control/TerminalPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="Control/TerminalPanel/VBoxContainer"]
+modulate = Color(1, 0.921569, 0.827451, 1)
+layout_mode = 2
+action_mode = 0
+text = "NEW GAME"
+
+[node name="Continue" type="Button" parent="Control/TerminalPanel/VBoxContainer"]
+modulate = Color(1, 0.921025, 0.829171, 1)
+layout_mode = 2
+action_mode = 0
+text = "CONTINUE"
+
+[node name="Quit" type="Button" parent="Control/TerminalPanel/VBoxContainer"]
+modulate = Color(1, 0.921569, 0.827451, 1)
+layout_mode = 2
+action_mode = 0
+text = "QUIT"
+
+[node name="SpacerBottom" type="MarginContainer" parent="Control/TerminalPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="Control/TerminalPanel/VBoxContainer"]
+modulate = Color(0.713726, 0.462745, 0.141176, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_kom0f")
+theme_override_font_sizes/font_size = 14
+text = "System Ready"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="FlickerTimer" type="Timer" parent="Control"]
