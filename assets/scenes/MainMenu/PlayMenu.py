@@ -9,13 +9,13 @@ class PlayMenu(Control):
 
     def _ready(self) -> None:
         self.panel = self.get_node("TerminalPanel")
-        self.title_label = self.get_node("TerminalPanel/VBox/TitleLabel")
-        self.subtitle_label = self.get_node("TerminalPanel/VBox/SubtitleLabel")
-        self.status_label = self.get_node("TerminalPanel/VBox/StatusLabel")
+        self.title_label = self.get_node("TerminalPanel/VBoxContainer/TitleLabel")
+        self.subtitle_label = self.get_node("TerminalPanel/VBoxContainer/SubtitleLabel")
+        self.status_label = self.get_node("TerminalPanel/VBoxContainer/StatusLabel")
 
-        self.btn_new = self.get_node("TerminalPanel/VBox/NewGame")
-        self.btn_continue = self.get_node("TerminalPanel/VBox/Continue")
-        self.btn_quit = self.get_node("TerminalPanel/VBox/Quit")
+        self.btn_new = self.get_node("TerminalPanel/VBoxContainer/NewGame")
+        self.btn_continue = self.get_node("TerminalPanel/VBoxContainer/Continue")
+        self.btn_quit = self.get_node("TerminalPanel/VBoxContainer/Quit")
 
         self.flicker_timer = self.get_node("FlickerTimer")
 

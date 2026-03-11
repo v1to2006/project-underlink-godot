@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://chga1bfuwslhr"]
+[gd_scene load_steps=15 format=3 uid="uid://chga1bfuwslhr"]
 
+[ext_resource type="Script" path="res://assets/scenes/MainMenu/PlayMenu.py" id="1_j6ya8"]
 [ext_resource type="FontFile" uid="uid://djhuh6wn7dinb" path="res://assets/scenes/MainMenu/Game Of Squids.ttf" id="1_kom0f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kom0f"]
@@ -39,6 +40,7 @@ bg_color = Color(0.533333, 0.0117647, 0.164706, 1)
 bg_color = Color(0.576471, 0.45098, 0.141176, 1)
 
 [node name="PlayMenu" type="Control"]
+z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,8 +52,10 @@ grow_vertical = 2
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_j6ya8")
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 27.8
