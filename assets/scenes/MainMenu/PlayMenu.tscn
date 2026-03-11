@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://chga1bfuwslhr"]
+[gd_scene load_steps=16 format=3 uid="uid://chga1bfuwslhr"]
 
 [ext_resource type="Script" path="res://assets/scripts/UI/PlayMenu.py" id="1_j6ya8"]
 [ext_resource type="FontFile" uid="uid://djhuh6wn7dinb" path="res://assets/scenes/MainMenu/Game Of Squids.ttf" id="1_kom0f"]
+[ext_resource type="AudioStream" uid="uid://h7hsjnvyk0j7" path="res://assets/music/Rust Menu - Main Lobby Theme.mp3" id="3_qsglv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kom0f"]
 bg_color = Color(0.184314, 0.141176, 0.0235294, 1)
@@ -161,3 +162,8 @@ layout_mode = 2
 text = "Logout"
 
 [node name="FlickerTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qsglv")
+volume_db = -9.649
+autoplay = true

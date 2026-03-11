@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4m0l5stnk67f"]
+[gd_scene load_steps=3 format=3 uid="uid://d4m0l5stnk67f"]
 
 [ext_resource type="Script" path="res://assets/scripts/UI/EnterYourUsername.py" id="1_6km0k"]
+[ext_resource type="AudioStream" uid="uid://h7hsjnvyk0j7" path="res://assets/music/Rust Menu - Main Lobby Theme.mp3" id="2_2jjsp"]
 
 [node name="EnterYourUsername" type="Control"]
 layout_mode = 3
@@ -34,3 +35,8 @@ text = "Confirm"
 
 [node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2jjsp")
+volume_db = -9.649
+autoplay = true
