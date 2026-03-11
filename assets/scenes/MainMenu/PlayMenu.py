@@ -1,6 +1,4 @@
-import random
-
-from py4godot.classes import gdclass
+from py4godot import gdclass
 from py4godot.classes.Control import Control
 
 
@@ -8,46 +6,30 @@ from py4godot.classes.Control import Control
 class PlayMenu(Control):
 
     def _ready(self) -> None:
-        self.panel = self.get_node("TerminalPanel")
-        self.title_label = self.get_node("TerminalPanel/VBoxContainer/TitleLabel")
-        self.subtitle_label = self.get_node("TerminalPanel/VBoxContainer/SubtitleLabel")
-        self.status_label = self.get_node("TerminalPanel/VBoxContainer/StatusLabel")
+        self.panel = self.get_node("CenterContainer/TerminalPanel")
+        self.title_label = self.get_node("CenterContainer/TerminalPanel/VBoxContainer/TitleLabel")
+        self.subtitle_label = self.get_node("CenterContainer/TerminalPanel/VBoxContainer/SubtitleLabel")
+        self.status_label = self.get_node("CenterContainer/TerminalPanel/VBoxContainer/StatusLabel")
 
-        self.btn_new = self.get_node("TerminalPanel/VBoxContainer/NewGame")
-        self.btn_continue = self.get_node("TerminalPanel/VBoxContainer/Continue")
-        self.btn_quit = self.get_node("TerminalPanel/VBoxContainer/Quit")
+        self.btn_new = self.get_node("CenterContainer/TerminalPanel/VBoxContainer/NewGame")
+        self.btn_continue = self.get_node("CenterContainer/TerminalPanel/VBoxContainer/Continue")
+        self.btn_quit = self.get_node("CenterContainer/TerminalPanel/VBoxContainer/Quit")
 
-        self.flicker_timer = self.get_node("FlickerTimer")
+        self.panel.visible = True
+        self.title_label.visible = True
+        self.subtitle_label.visible = True
+        self.status_label.visible = True
+        self.btn_new.visible = True
+        self.btn_continue.visible = True
+        self.btn_quit.visible = True
+
+        self.title_label.text = "UNDERLINK"
+        self.subtitle_label.text = "SALVAGE NAVIGATION TERMINAL"
+        self.status_label.text = "SYSTEM READY"
 
         self.btn_new.pressed.connect(self._on_new_pressed)
         self.btn_continue.pressed.connect(self._on_continue_pressed)
         self.btn_quit.pressed.connect(self._on_quit_pressed)
-
-        self.flicker_timer.timeout.connect(self._on_flicker)
-        self.flicker_timer.wait_time = 0.08
-        self.flicker_timer.start()
-
-        self.full_subtitle = "SALVAGE NAVIGATION TERMINAL"
-        self.current_index = 0
-        self.subtitle_label.text = ""
-        self.status_label.text = "BOOTING..."
-
-    def _process(self, delta: float) -> None:
-        # Simple typewriter effect for subtitle
-        if self.current_index < len(self.full_subtitle):
-            self.current_index += 1
-            self.subtitle_label.text = self.full_subtitle[:self.current_index]
-        elif self.status_label.text == "BOOTING...":
-            self.status_label.text = "SYSTEM READY"
-
-    def _on_flicker(self) -> None:
-        # Slight flicker by changing panel alpha a bit
-        try:
-            color = self.panel.modulate
-            color.a = random.uniform(0.92, 1.0)
-            self.panel.modulate = color
-        except Exception:
-            pass
 
     def _on_new_pressed(self) -> None:
         self.status_label.text = "OPENING USER REGISTRATION..."
