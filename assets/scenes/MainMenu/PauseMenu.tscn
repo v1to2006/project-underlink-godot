@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://t1a7pgwwlkj6"]
+[gd_scene load_steps=3 format=3 uid="uid://t1a7pgwwlkj6"]
 
 [ext_resource type="Script" path="res://assets/scripts/UI/PauseMenu.py" id="1_bj84y"]
+[ext_resource type="FontFile" uid="uid://djhuh6wn7dinb" path="res://assets/scenes/MainMenu/Game Of Squids.ttf" id="2_bj84y"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -26,21 +27,26 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bj84y")
+theme_override_font_sizes/font_size = 25
 text = "Paused"
 horizontal_alignment = 1
 uppercase = true
 
 [node name="Resume" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bj84y")
 action_mode = 0
 text = "RESUME"
 
 [node name="MainMenu" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bj84y")
 action_mode = 0
 text = "MAIN MENU"
 
 [node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bj84y")
 action_mode = 0
 text = "QUIT"
