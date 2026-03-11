@@ -6,7 +6,7 @@ from py4godot.classes.Node3D import Node3D
 @gdclass
 class DrillStatusLabel(Label3D):
     drill_node_path: str = "/root/Expedition/ProxyCube"
-    value_type: str = "x"   # "x", "z", "rotation"
+    value_type: str = "x"
     prefix: str = "X"
     decimals: int = 0
 
@@ -19,7 +19,7 @@ class DrillStatusLabel(Label3D):
 
     def _update_text(self) -> None:
         if self.drill_node is None:
-            self.text = f"{prefix}: ---"
+            self.text = f"{self.prefix}: ---"
             return
 
         if self.value_type == "x":
