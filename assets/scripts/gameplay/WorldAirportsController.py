@@ -69,3 +69,16 @@ class WorldAirportsController(Node):
             return None
 
         return self.airport_point_nodes[index]
+
+    def get_checkpoint_airport_point_node(self, opened_airports: list[str]):
+        if len(opened_airports) == 0:
+            return None
+
+        last_opened_icao = opened_airports[-1]
+
+        for index, airport_point in enumerate(self.airport_points):
+            airport_data = airport_point.airport_data
+            if airport_data.get("icao_code", "") == last_opened_icao:
+                return self.airport_point_nodes[index]
+
+        return None

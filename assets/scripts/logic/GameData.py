@@ -56,8 +56,9 @@ class BackendHttp:
 
 @gdclass
 class GameData(Node):
-    username: str = "v1toasdasd"
+    username: str = "newUser123"
     backend_base_url: str = "http://127.0.0.1:5000"
+    proxy_cube_node_path: str = "/root/Expedition/ProxyCube"
 
     def _ready(self) -> None:
         self.backend = BackendHttp(self.backend_base_url)
@@ -82,6 +83,7 @@ class GameData(Node):
     def register_world_airports_controller(self, controller) -> None:
         self.world_airports_controller = controller
         self._refresh_world_airports()
+        self._move_proxy_to_checkpoint()
         self.refresh_console_idle()
 
     def login_or_start_game(self) -> None:
@@ -120,6 +122,7 @@ class GameData(Node):
             self.opened_airports = []
 
             self._refresh_world_airports()
+            self._move_proxy_to_checkpoint()
             self.refresh_console_idle()
             return
 
@@ -148,6 +151,7 @@ class GameData(Node):
                 )
 
         self._refresh_world_airports()
+        self._move_proxy_to_checkpoint()
         self.refresh_console_idle()
 
     def get_airport_info(self, icao_code: str) -> dict:
@@ -165,6 +169,14 @@ class GameData(Node):
             return None
 
         return self.world_airports_controller.get_active_airport_point_node()
+
+    def get_checkpoint_airport_point_node(self):
+        if self.world_airports_controller is None:
+            return None
+
+        return self.world_airports_controller.get_checkpoint_airport_point_node(
+            self.opened_airports
+        )
 
     def get_next_airport_display_coordinates(self) -> dict:
         airport_point_node = self.get_next_airport_point_node()
@@ -249,6 +261,7 @@ class GameData(Node):
         self.current_airport_data = {}
 
         self._refresh_world_airports()
+        self._move_proxy_to_checkpoint()
 
         if self.console is not None:
             self.console.show_airport_info(
@@ -279,6 +292,26 @@ class GameData(Node):
             self.opened_airports,
             self.completed,
         )
+
+    def _move_proxy_to_checkpoint(self) -> None:
+        checkpoint_node = self.get_checkpoint_airport_point_node()
+        if checkpoint_node is None:
+            return
+
+        proxy_cube = self.get_node(self.proxy_cube_node_path)
+        if proxy_cube is None:
+            return
+
+        checkpoint_position = checkpoint_node.global_position
+        current_position = proxy_cube.global_position
+
+        current_position.x = checkpoint_position.x
+        current_position.z = checkpoint_position.z
+        proxy_cube.global_position = current_position
+
+        proxy_script = proxy_cube.get_pyscript()
+        if proxy_script is not None and hasattr(proxy_script, "reset_motion"):
+            proxy_script.reset_motion()
 
     def _show_console_error(self, message: str) -> None:
         print(f"[GameData] {message}")
